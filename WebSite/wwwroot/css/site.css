@@ -12,6 +12,39 @@ a {
   color: #0366d6;
 }
 
+.border-item{
+    border: 2px double gray;
+    border-radius: 25px;
+    margin: 0px 4px 4px 0px;
+    float:left;
+    width:48%;
+    padding-left:10px;
+    padding-top:10px;
+    height:180px;
+    position:relative;
+}
+
+.inline-div{
+    max-width:100%;
+    height:auto;
+    overflow:hidden;
+}
+
+.goods-name{
+    font-size:24px;
+}
+
+.goods-description{
+    font-size:18px;
+}
+
+.goods-Guid{
+    font-size:12px;
+    position:absolute;
+    top:140px;
+    left:10px;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

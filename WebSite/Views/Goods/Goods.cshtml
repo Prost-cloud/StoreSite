@@ -1,0 +1,25 @@
+﻿@using WebSite.DBModels
+@model List<Goods>
+@{
+    ViewData["Title"] = "Goods";
+    ViewData["Layaut"] = "~/css/site.css";
+}
+<h1>Goods</h1>
+@for(int i = 0; i < Model.Count(); i+=2)
+{
+    <div class = "inline-div">
+        <div class = "border-item">  
+            <p class = "goods-name">@Model[i].Name</p>
+            <p class = "goods-description">@Model[i].Description</p> 
+            <div class = "goods-Guid">@Model[i].guid</div> 
+        </div>
+        @if (Model.Count() > i + 1)
+        {
+            <div class = "border-item">  
+                <p class = "goods-name">@Model[i+1].Name</p>
+                <p class = "goods-description">@Model[i+1].Description</p> 
+                <div class = "goods-Guid"><p>@Model[i+1].guid</p></div> 
+            </div>
+        }
+    </div>
+}

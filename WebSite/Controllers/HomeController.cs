@@ -20,7 +20,8 @@ namespace WebSite.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var number = 15 + 26;
+            return View((number, "This is my site"));
         }
 
         public IActionResult Privacy()

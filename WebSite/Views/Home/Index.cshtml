@@ -1,8 +1,18 @@
-﻿@{
+﻿@model (int, string)
+@{
     ViewData["Title"] = "Home Page";
+    ViewData["BackgroundColor"] = "#F00";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-1">Welcome</h1>
+    <h1 class="display-2">@Model.Item1</h1>
+    <h1 class="display-3">@Model.Item2</h1>
+    <h1 class="display-4">Here's my web site</h1>
+    <h1 class="display-5">For trianing</h1>
+    <h1 class="display-6">in ASP.NET</h1>
+    <h1 class="display-7">i'd like to make some DB and user UI</h1>
+    <h1 class="display-8">For explore goods and other stuff for clients</h1>
+    <h1 class="display-9">and DB changes for admins.</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
