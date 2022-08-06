@@ -6,22 +6,22 @@ using WebSite.DBModels;
 
 namespace WebSite.Controllers
 {
-    public class GoodsController : Controller
+    public class ProductsController : Controller
     {
         // GET: GoodsController
-        public ActionResult Goods()
+        public ActionResult Products()
         {
-            List<Goods> goods = new List<Goods>();
+            List<Products> products = new List<Products>();
 
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Cheese", Description = "That flavour piece of cheese make you happy for whole day!"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Sausage", Description = "That delicious sausage maden by franch chef called Chicken destroyer"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Pizza", Description = "Master piese pizza by famous italian dude Giovanni Giorgio"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Coca-Cola", Description = "We are not fat shamers"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Wine", Description = "Tasty wine for man that known taste of life"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Vodka", Description = "Suka Blyat"});
-            goods.Add(new Goods { guid = Guid.NewGuid(), Name = "Beer", Description = "Gomer's special" });
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Cheese", Description = "That flavour piece of cheese make you happy for whole day!"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Sausage", Description = "That delicious sausage maden by franch chef called Chicken destroyer"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Pizza", Description = "Master piese pizza by famous italian dude Giovanni Giorgio"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Coca-Cola", Description = "We are not fat shamers"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Wine", Description = "Tasty wine for man that known taste of life"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Vodka", Description = "Suka Blyat"});
+            products.Add(new Products { guid = Guid.NewGuid(), Name = "Beer", Description = "Gomer's special" });
 
-            return View(goods);
+            return View(products);
         }
 
         public ActionResult Index()

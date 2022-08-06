@@ -30,15 +30,15 @@ a {
     overflow:hidden;
 }
 
-.goods-name{
+.Products-name{
     font-size:24px;
 }
 
-.goods-description{
+.Products-description{
     font-size:18px;
 }
 
-.goods-Guid{
+.Products-Guid{
     font-size:12px;
     position:absolute;
     top:140px;
