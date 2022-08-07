@@ -1,25 +1,41 @@
 ﻿@using WebSite.DBModels
-@model List<Products>
+@using WebSite.ShowModels
+@model ProductsShowModel
 @{
     ViewData["Title"] = "Products";
     ViewData["Layaut"] = "~/css/site.css";
 }
 <h1>Products</h1>
-@for(int i = 0; i < Model.Count(); i+=2)
+
+@for(int i = 0; Model.ProductsPerPage * Model.CurrentPage + i < Model.ProductsList.Count() && i < Model.ProductsPerPage; i+=2)
 {
     <div class = "inline-div">
         <div class = "border-item">  
-            <p class = "Products-name">@Model[i].Name</p>
-            <p class = "Products-description">@Model[i].Description</p> 
-            <div class = "Products-Guid">@Model[i].guid</div> 
+            <p class = "Products-name">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].Name</p>
+            <p class = "Products-description">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].Description</p> 
+            <div class = "Products-Guid">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].guid</div> 
         </div>
-        @if (Model.Count() > i + 1)
+        @if (Model.ProductsList.Count() > Model.ProductsPerPage * Model.CurrentPage + i + 1)
         {
             <div class = "border-item">  
-                <p class = "Products-name">@Model[i+1].Name</p>
-                <p class = "Products-description">@Model[i+1].Description</p> 
-                <div class = "Products-Guid"><p>@Model[i+1].guid</p></div> 
+                <p class = "Products-name">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].Name</p>
+                <p class = "Products-description">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].Description</p> 
+                <div class = "Products-Guid"><p>@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].guid</p></div> 
             </div>
         }
     </div>
 }
+    @if (Model.IsPagesNeeded)
+    {
+        <div class = "PageJump">
+            <ol>
+                <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "1">1</a></li>
+                @for (int j = Model.GetPageMap.PageFrom; j <= Model.GetPageMap.PageTo; j++)
+                {
+                    <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@j">@j</a></li>
+                }
+                <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@Model.PageCount">@Model.PageCount</a></li>
+            </ol>
+        </div>
+    }
+
