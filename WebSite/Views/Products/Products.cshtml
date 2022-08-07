@@ -28,14 +28,14 @@
     @if (Model.IsPagesNeeded)
     {
         <div class = "PageJump">
-            <ol>
+            <ul>
                 <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "1">1</a></li>
                 @for (int j = Model.GetPageMap.PageFrom; j <= Model.GetPageMap.PageTo; j++)
                 {
                     <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@j">@j</a></li>
                 }
                 <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@Model.PageCount">@Model.PageCount</a></li>
-            </ol>
+            </ul>
         </div>
     }
 
