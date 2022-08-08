@@ -9,11 +9,11 @@ namespace WebSite.ShowModels
         public readonly int ProductsCount;
         public int CurrentPage;
 
-        public int ProductsPerPage => 4;
+        public int ProductsPerPage => 1;
         public int PageCount => ProductsCount / ProductsPerPage +
             (ProductsCount % ProductsPerPage == 0 ? 0 : 1);
         public bool IsPagesNeeded => ProductsCount > ProductsPerPage;
-        public PageMap GetPageMap => getPageMap();
+        public PageMap GetCurrentPageMap => GetPageMap();
 
         public ProductsShowModel(List<Products> products) : this(products, 0) { }
 
@@ -31,39 +31,70 @@ namespace WebSite.ShowModels
             }
         }
 
-        private PageMap getPageMap()
+        // TODO: Remove magic integers 
+        private PageMap GetPageMap()
         {
             int pageFrom = 0;
             int pageTo = 0;
 
-            if (CurrentPage <= 4)
+            if (CurrentPage < 4)
             {
+                pageFrom = 2;
                 if (PageCount < 8)
                 {
-                    pageFrom = 2;
                     pageTo = PageCount - 1;
                 }
 
-                if (PageCount > 8)
+                if (PageCount >= 8)
                 {
-                    pageFrom = 2;
-                    pageTo = PageCount - 1;
+                    if (CurrentPage > 3)
+                    {
+                        pageTo = CurrentPage + 4;
+                    }
+                    else
+                    {
+                        pageTo = 6;
+                    }
                 }
             }
-            else if (CurrentPage > 4)
+            else if (CurrentPage >= 4)
             {
-                pageFrom = CurrentPage - 2;
-                if (CurrentPage+2 > PageCount - 1)
+                pageFrom = CurrentPage - 1;
+                if (CurrentPage + 2 > PageCount - 1)
                 {
                     pageTo = PageCount - 1;
                 }
                 else
                 {
-                    pageTo = CurrentPage + 2;
+                    pageTo = CurrentPage + 4;
                 }
             }
 
-            return new PageMap() { PageFrom = pageFrom, PageTo = pageTo };
+            bool isNextPageNeeded = false, isPreviousPageNeeded = false;
+            int previousPage = 0, nextPage = 0;
+
+            if (CurrentPage >= 4)
+            {
+                isPreviousPageNeeded = true;
+                previousPage = CurrentPage - 2;
+            }
+
+            if (PageCount > 7)
+            {
+                if (PageCount - CurrentPage - 2 >= 3)
+                {
+                    isNextPageNeeded = true;
+                    if (CurrentPage > 3)
+                    {
+                        nextPage = CurrentPage + 5;
+                    }
+                    else
+                    {
+                        nextPage = 7;
+                    }
+                }
+            }
+            return new PageMap() { PageFrom = pageFrom, PageTo = pageTo, IsNextNeeded = isNextPageNeeded, IsPreviousNeeded = isPreviousPageNeeded, PreviousPage = previousPage, NextPage = nextPage };
         }
     }
 }

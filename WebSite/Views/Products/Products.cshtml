@@ -30,10 +30,22 @@
         <div class = "PageJump">
             <ul>
                 <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "1">1</a></li>
-                @for (int j = Model.GetPageMap.PageFrom; j <= Model.GetPageMap.PageTo; j++)
+
+                @if (Model.GetCurrentPageMap.IsPreviousNeeded)
+                {
+                    <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@Model.GetCurrentPageMap.PreviousPage">…</a></li>
+                }
+
+                @for (int j = Model.GetCurrentPageMap.PageFrom; j <= Model.GetCurrentPageMap.PageTo; j++)
                 {
                     <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@j">@j</a></li>
                 }
+
+                @if (Model.GetCurrentPageMap.IsNextNeeded)
+                {
+                    <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@Model.GetCurrentPageMap.NextPage">…</a></li>
+                }
+
                 <li><a class="nav-link text-dark"  asp-area="" asp-controller="Products" asp-action="Products" asp-route-page = "@Model.PageCount">@Model.PageCount</a></li>
             </ul>
         </div>
