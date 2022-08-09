@@ -32,20 +32,25 @@ namespace WebSite.ShowModels
         }
 
         // TODO: Remove magic integers 
+        // TODO: Think over making that depended out of chunk page count
         private PageMap GetPageMap()
         {
+            const int minimalCurrentPageToCountLowerBound = 4;
+            const int maximalPageCountToCountUpperBound = 8;
+            const int minimalPageCountToCountNextPage = 3;
+
             int pageFrom = 0;
             int pageTo = 0;
 
-            if (CurrentPage < 4)
+            if (CurrentPage < minimalCurrentPageToCountLowerBound)
             {
                 pageFrom = 2;
-                if (PageCount < 8)
+                if (PageCount < maximalPageCountToCountUpperBound)
                 {
                     pageTo = PageCount - 1;
                 }
 
-                if (PageCount >= 8)
+                if (PageCount >= maximalPageCountToCountUpperBound)
                 {
                     if (CurrentPage > 3)
                     {
@@ -57,7 +62,7 @@ namespace WebSite.ShowModels
                     }
                 }
             }
-            else if (CurrentPage >= 4)
+            else if (CurrentPage >= minimalCurrentPageToCountLowerBound)
             {
                 pageFrom = CurrentPage - 1;
                 if (CurrentPage + 2 > PageCount - 1)
@@ -73,7 +78,7 @@ namespace WebSite.ShowModels
             bool isNextPageNeeded = false, isPreviousPageNeeded = false;
             int previousPage = 0, nextPage = 0;
 
-            if (CurrentPage >= 4)
+            if (CurrentPage >= minimalCurrentPageToCountLowerBound)
             {
                 isPreviousPageNeeded = true;
                 previousPage = CurrentPage - 2;
@@ -84,7 +89,7 @@ namespace WebSite.ShowModels
                 if (PageCount - CurrentPage - 2 >= 3)
                 {
                     isNextPageNeeded = true;
-                    if (CurrentPage > 3)
+                    if (CurrentPage > minimalPageCountToCountNextPage)
                     {
                         nextPage = CurrentPage + 5;
                     }
