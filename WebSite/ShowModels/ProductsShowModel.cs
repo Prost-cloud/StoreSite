@@ -65,7 +65,7 @@ namespace WebSite.ShowModels
             else if (CurrentPage >= minimalCurrentPageToCountLowerBound)
             {
                 pageFrom = CurrentPage - 1;
-                if (CurrentPage + 2 > PageCount - 1)
+                if (CurrentPage + 4 > PageCount - 1)
                 {
                     pageTo = PageCount - 1;
                 }
@@ -86,7 +86,7 @@ namespace WebSite.ShowModels
 
             if (PageCount > 7)
             {
-                if (PageCount - CurrentPage - 2 >= 3)
+                if (PageCount - CurrentPage - 2 > 3)
                 {
                     isNextPageNeeded = true;
                     if (CurrentPage > minimalPageCountToCountNextPage)
