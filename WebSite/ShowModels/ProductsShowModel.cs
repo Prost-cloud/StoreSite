@@ -9,7 +9,7 @@ namespace WebSite.ShowModels
         public readonly int ProductsCount;
         public int CurrentPage;
 
-        public int ProductsPerPage => 1;
+        public int ProductsPerPage => 6;
         public int PageCount => ProductsCount / ProductsPerPage +
             (ProductsCount % ProductsPerPage == 0 ? 0 : 1);
         public bool IsPagesNeeded => ProductsCount > ProductsPerPage;
@@ -36,8 +36,8 @@ namespace WebSite.ShowModels
         private PageMap GetPageMap()
         {
             const int minimalCurrentPageToCountLowerBound = 4;
-            const int maximalPageCountToCountUpperBound = 8;
             const int minimalPageCountToCountNextPage = 3;
+            const int maximalPageCountToCountUpperBound = 8;
 
             int pageFrom = 0;
             int pageTo = 0;

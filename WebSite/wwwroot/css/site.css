@@ -12,6 +12,40 @@ a {
   color: #0366d6;
 }
 
+.PageJumpDiv{
+    color: white;
+    text-align: center;
+    height: auto;
+}
+
+.PageJump{
+    padding: 10px;
+    margin:10px;
+    height: 40px;
+
+}
+
+ul.PageJump{
+    display: inline-flex;
+    padding-block: 4px;
+    margin:10px;
+}
+
+ul.PageJump li {
+    list-style: none;
+    border: 1px double black;
+    border-radius : 10px;
+    width: 40px;
+    margin: 0px 4px 0px 0px;
+}
+
+ul.PageJump li a {
+    text-decoration: none;
+    margin: 10px;
+    color: #222;
+    font-size: 18px;
+}
+
 .border-item{
     border: 2px double gray;
     border-radius: 25px;
