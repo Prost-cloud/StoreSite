@@ -31,7 +31,7 @@ namespace WebSite
                 new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
                 );
 
-            services.AddScoped<IDbProvider, DbProvider>();
+            services.AddScoped<IDbReader, DbReader>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,17 +10,18 @@ namespace WebSite.Controllers
 {
     public class ProductsController : Controller
     {
-        IDbProvider dbProvider;
+        IDbReader dbReader;
 
-        public ProductsController(IDbProvider dbProvider)
+        public ProductsController(IDbReader dbProvider)
         {
-            this.dbProvider = dbProvider;
+            this.dbReader = dbProvider;
         }
 
         // GET: GoodsController
         public ActionResult Product()
         {
-            ProductsShowModel productsShowModel = new ProductsShowModel(dbProvider.GetAllProducts(x => x.IsFavorite == true));
+            ProductsShowModel productsShowModel = new ProductsShowModel(dbReader.GetProducts
+                (x => x.IsFavorite == true));
 
             return View(productsShowModel);
         }
@@ -28,7 +29,7 @@ namespace WebSite.Controllers
         // GET: GoodsController/5
         public ActionResult Products(int page)
         {
-            ProductsShowModel productShowModel = new ProductsShowModel(dbProvider.GetAllProducts(), page - 1);
+            ProductsShowModel productShowModel = new ProductsShowModel(dbReader.GetAllProducts(), page - 1);
 
             return View(productShowModel);
         }

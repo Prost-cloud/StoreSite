@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Buffers.Text;
+using System.Collections.Generic;
+using System.IO;
 using WebSite.DBModels;
 
 namespace WebSite.ShowModels
@@ -13,7 +16,9 @@ namespace WebSite.ShowModels
         public int PageCount => ProductsCount / ProductsPerPage +
             (ProductsCount % ProductsPerPage == 0 ? 0 : 1);
         public bool IsPagesNeeded => ProductsCount > ProductsPerPage;
-        public PageMap GetCurrentPageMap => GetPageMap();
+        public PageMap GetCurrentPageMap => _pageMap;
+
+        private PageMap _pageMap;
 
         public ProductsShowModel(List<Products> products) : this(products, 0) { }
 
@@ -29,6 +34,7 @@ namespace WebSite.ShowModels
             {
                 CurrentPage = currentPage;
             }
+            _pageMap = GetPageMap();
         }
 
         // TODO: Remove magic integers 
@@ -100,6 +106,16 @@ namespace WebSite.ShowModels
                 }
             }
             return new PageMap() { PageFrom = pageFrom, PageTo = pageTo, IsNextNeeded = isNextPageNeeded, IsPreviousNeeded = isPreviousPageNeeded, PreviousPage = previousPage, NextPage = nextPage };
+        }
+
+        public string UrlSchemeFromElementNumber(int elementNumber)
+        {
+            var imageBytes = File.ReadAllBytes(ProductsList[elementNumber].ImagePath);
+
+            const string baseString = "data:image/png;base64,";
+            //const string baseString = "";
+
+            return baseString + (Convert.ToBase64String(imageBytes));
         }
     }
 }

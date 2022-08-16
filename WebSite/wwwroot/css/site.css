@@ -57,11 +57,36 @@ ul.PageJump li a {
     height:180px;
     position:relative;
 }
+.border-item-main{
+    border: 2px double gray;
+    border-radius: 25px;
+    margin: 0px 4px 4px 0px;
+    width:100%;
+    padding-left:10px;
+    padding-top:10px;
+    height:360px;
+    position:relative;
+}
 
 .inline-div{
     max-width:100%;
     height:auto;
     overflow:hidden;
+}
+
+.product-image-main{
+    height: 300px;
+    width: 450px;
+    object-fit: scale-down;
+    margin: 10px;
+}
+
+.left-orientired{
+    float:left;
+}
+
+.right-orientired{
+    float:right;
 }
 
 .Products-name{
@@ -76,6 +101,13 @@ ul.PageJump li a {
     font-size:12px;
     position:absolute;
     top:140px;
+    left:10px;
+}
+
+.Products-Guid{
+    font-size:12px;
+    position:absolute;
+    top:310px;
     left:10px;
 }
 
