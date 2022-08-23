@@ -6,9 +6,9 @@ namespace WebSite.DBProvider
 {
     public interface IDbReader : IDisposable
     {
-        List<Products> GetAllProducts();
-        List<Products> GetProducts(Func<Products, bool> search);
-        List<Products> GetAllProductsWithDeleted();
-        List<Products> GetProductsWithDeleted(Func<Products, bool> search);
+        List<Product> GetAllProducts();
+        List<Product> GetProducts(Func<Product, bool> search);
+        List<Product> GetAllProductsWithDeleted();
+        List<Product> GetProductsWithDeleted(Func<Product, bool> search);
     }
 }

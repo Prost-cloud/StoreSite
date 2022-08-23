@@ -12,6 +12,13 @@ a {
   color: #0366d6;
 }
 
+.link{
+    color: black;
+    font-size: 24px;
+    text-align: right;
+    margin: 20px 12px 10px 0px;
+}
+
 .PageJumpDiv{
     color: white;
     text-align: center;
@@ -91,16 +98,19 @@ ul.PageJump li a {
 
 .Products-name{
     font-size:24px;
+    margin:10px;
 }
 
 .Products-description{
     font-size:18px;
+    margin:10px;
 }
 
 .Products-Guid{
     font-size:12px;
     position:absolute;
     top:140px;
+    margin:10px;
     left:10px;
 }
 

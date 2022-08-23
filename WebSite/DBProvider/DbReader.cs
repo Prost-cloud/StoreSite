@@ -16,22 +16,22 @@ namespace WebSite.DBProvider
             sqliteDbContext.Database.EnsureCreated();
         }
 
-        public List<Products> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             return sqliteDbContext.Products.Where(x => !x.IsDeleted).ToList();
         }
 
-        public List<Products> GetAllProductsWithDeleted()
+        public List<Product> GetAllProductsWithDeleted()
         {
             return sqliteDbContext.Products.ToList();
         }
 
-        public List<Products> GetProducts(Func<Products, bool> search)
+        public List<Product> GetProducts(Func<Product, bool> search)
         {
             return sqliteDbContext.Products.Where(search).Where(x => !x.IsDeleted).ToList();
         }
 
-        public List<Products> GetProductsWithDeleted(Func<Products, bool> search)
+        public List<Product> GetProductsWithDeleted(Func<Product, bool> search)
         {
             return sqliteDbContext.Products.Where(search).ToList();
         }

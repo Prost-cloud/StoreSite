@@ -13,14 +13,14 @@
         <div class = "border-item">  
             <p class = "Products-name">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].Name</p>
             <p class = "Products-description">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].Description</p> 
-            <div class = "Products-Guid">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].guid</div> 
+            <div class = "Products-Guid">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i].Guid</div> 
         </div>
         @if (Model.ProductsList.Count() > Model.ProductsPerPage * Model.CurrentPage + i + 1)
         {
             <div class = "border-item">  
                 <p class = "Products-name">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].Name</p>
                 <p class = "Products-description">@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].Description</p> 
-                <div class = "Products-Guid"><p>@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].guid</p></div> 
+                <div class = "Products-Guid"><p>@Model.ProductsList[Model.ProductsPerPage * Model.CurrentPage + i+1].Guid</p></div> 
             </div>
         }
     </div>

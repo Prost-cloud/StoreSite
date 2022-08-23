@@ -8,7 +8,7 @@ namespace WebSite.ShowModels
 {
     public class ProductsShowModel
     {
-        public readonly List<Products> ProductsList;
+        public readonly List<Product> ProductsList;
         public readonly int ProductsCount;
         public int CurrentPage;
 
@@ -20,9 +20,9 @@ namespace WebSite.ShowModels
 
         private PageMap _pageMap;
 
-        public ProductsShowModel(List<Products> products) : this(products, 0) { }
+        public ProductsShowModel(List<Product> products) : this(products, 0) { }
 
-        public ProductsShowModel(List<Products> products, int currentPage)
+        public ProductsShowModel(List<Product> products, int currentPage)
         {
             ProductsList = products;
             ProductsCount = products.Count;

@@ -2,9 +2,9 @@
 
 namespace WebSite.DBModels
 {
-    public class Products
+    public class Product
     {
-        public Guid guid { get; set; }
+        public Guid Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }

@@ -6,14 +6,14 @@
     ViewData["Layaut"] = "~/css/site.css";
 }
 <h1>Products</h1>
+@{int j = 0;}
 @for(int i = 0; i < Model.ProductsList.Count(); i++)
 {
-    int j = 0; 
+    j++; 
     
         <div class = "border-item-main">  
-            @if(j%2==0)
+            @if(j%2!=0)
             {
-
                 <img class = "product-image-main left-orientired" src="@Model.UrlSchemeFromElementNumber(i)">
             } 
             else
@@ -23,6 +23,10 @@
 
         <p class = "Products-name">@Model.ProductsList[i].Name</p>
             <p class = "Products-description">@Model.ProductsList[i].Description</p> 
-            <div class = "Products-Guid-main">@Model.ProductsList[i].guid</div> 
+            <div class = "Products-Guid-main">@Model.ProductsList[i].Guid</div> 
         </div>
 }
+
+<div class = "link">
+    <a class = "link" asp-area = "" asp-controller = "Products" asp-action = "Products" aps-route-page = "0">See all our products</a>
+</div>
