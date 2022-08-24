@@ -15,13 +15,14 @@ namespace WebSite.ShowModels
         public int ProductsPerPage => 6;
         public int PageCount => ProductsCount / ProductsPerPage +
             (ProductsCount % ProductsPerPage == 0 ? 0 : 1);
+
         public bool IsPagesNeeded => ProductsCount > ProductsPerPage;
         public PageMap GetCurrentPageMap => _pageMap;
 
         private PageMap _pageMap;
 
         public ProductsShowModel(List<Product> products) : this(products, 0) { }
-
+ 
         public ProductsShowModel(List<Product> products, int currentPage)
         {
             ProductsList = products;
@@ -37,7 +38,7 @@ namespace WebSite.ShowModels
             _pageMap = GetPageMap();
         }
 
-        // TODO: Remove magic integers 
+        // TODO: Remove magic integers
         // TODO: Think over making that depended out of chunk page count
         private PageMap GetPageMap()
         {

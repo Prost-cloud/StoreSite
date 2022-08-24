@@ -8,7 +8,7 @@ namespace WebSite.DBProvider
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Product> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,27 +27,27 @@ namespace WebSite.DBProvider
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(k => k.Guid);
-                entity.HasIndex(k => k.Name);
             });
+            modelBuilder.Entity<Product>().Property(k => k.Guid).HasDefaultValueSql("NEWID()");
+
 
             modelBuilder.Entity<Role>().ToTable("Roles");
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasKey(k => k.Guid);
-                //entity.HasAlternateKey(k => k.RoleId);
-                entity.HasIndex(k => k.RoleId);
+                entity.HasIndex(k => k.RoleId).IsUnique();
             });
             modelBuilder.Entity<Role>().Property(k => k.RoleId).ValueGeneratedOnAdd();
-            //modelBuilder.Entity<Role>().Property(k => k.RoleId).();
+
 
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(k => k.Guid);
-                //entity.HasAlternateKey(k => k.UserId);
-                entity.HasIndex(k => k.UserId);
+                entity.HasIndex(k => k.UserId).IsUnique();
             });
             modelBuilder.Entity<User>().Property(k => k.UserId).ValueGeneratedOnAdd();
+
 
             base.OnModelCreating(modelBuilder);
         }

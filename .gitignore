@@ -366,3 +366,5 @@ sqlitedb
 *.sqlite3
 *.jpg
 *.png
+*.sqlite3-shm
+*.sqlite3-wal
